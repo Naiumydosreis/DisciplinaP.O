@@ -19,7 +19,7 @@ public class Baralho {
         return cartas.qtdadeCartas();
     }
 
-    public boolean vazio(){
+    public boolean vazio(){ 
         return cartas.vazio();
     }
 
