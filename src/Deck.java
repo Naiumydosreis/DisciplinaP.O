@@ -3,7 +3,7 @@ import java.util.Random;
 public class Deck {
     public final int TAMANHO = 104;
     private Random r;
-    private Carta[] cartas;
+    Carta[] cartas;
     private int proxLivre;
 
     public Deck() {

@@ -1,4 +1,4 @@
-import java.
+import java.util.Random;
 
 public class Baralho {
     private Deck cartas;
@@ -11,6 +11,7 @@ public class Baralho {
                 cartas.insereEmbaixo(carta);
             }
         }
+        sortearOrdem();
     }
 
     public int qtdadeCartas(){
@@ -32,8 +33,9 @@ public class Baralho {
         Random random = new Random();
         for (int i = 0; i < cartas.qtdadeCartas(); i++){
             int j = random.nextInt(cartas.qtdadeCartas());
-            Carta temp = cartas.cartas[i];
+            Carta temp = this.cartas.cartas[i];
             cartas.cartas[i] = cartas.cartas[j];
             cartas.cartas[j] = temp;
         }
+}
 }
