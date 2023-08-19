@@ -13,7 +13,7 @@ public class App {
         }
         // Loop do jogo
         boolean acabou = false;
-        int rodada = 1;
+        int rodada = 1; 
         while(!acabou){
             // Pega uma carta de cada jogador
             Carta cj1 = jogador1.retiraDeCima();

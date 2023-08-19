@@ -5,6 +5,7 @@ public class Baralho {
 
     public Baralho(){
         cartas = new Deck();
+        Naipe[] naipes = Naipe.naipe.values(); 
         for(Naipe naipe:Naipe.values()){
             for(Valor valor:Valor.values()){
                 Carta carta = new Carta(naipe,valor);
@@ -28,6 +29,11 @@ public class Baralho {
 
     public void embaralha(){
         cartas.embaralha();
+    }
+    public void incorporarCartas(Baralho outroBaralho){
+        while (!outroBaralho.vazio()){
+            cartas.insereEmbaixo(outroBaralho.retiraDeCima());
+        }
     }
     private void sortearOrdem(){
         Random random = new Random();
