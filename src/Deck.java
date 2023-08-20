@@ -57,4 +57,42 @@ public class Deck {
             vezes--;
         }
     }
+ 
+            public void incorporarCartas(Deck jogador2) {
+                Deck cartasEmpatadas = new Deck(); 
+            
+                while (!jogador2.vazio()) {
+                    Carta cartaJogador1 = retiraDeCima();
+                    Carta cartaJogador2 = jogador2.retiraDeCima();
+            
+                    if (cartaJogador1.igual(cartaJogador2)) {
+                        System.out.println("Empate! As cartas vão para uma acumulação.");
+                        cartasEmpatadas.insereEmbaixo(cartaJogador1);
+                        cartasEmpatadas.insereEmbaixo(cartaJogador2);
+        
+                        while (cartaJogador1.igual(cartaJogador2)) {
+                            cartaJogador1 = retiraDeCima();
+                            cartaJogador2 = jogador2.retiraDeCima();
+                            cartasEmpatadas.insereEmbaixo(cartaJogador1);
+                            cartasEmpatadas.insereEmbaixo(cartaJogador2);
+                        }
+                    }
+            
+                    if (cartaJogador1.eMaior(cartaJogador2)) {
+                        insereEmbaixo(cartaJogador1);
+                        insereEmbaixo(cartaJogador2);
+                        incorporarCartas(cartasEmpatadas, this); // Adiciona cartas acumuladas ao vencedor
+                    } else {
+                        jogador2.insereEmbaixo(cartaJogador2);
+                        jogador2.insereEmbaixo(cartaJogador1);
+                        incorporarCartas(cartasEmpatadas, jogador2); // Adiciona cartas acumuladas ao vencedor
+                    }
+                }
+            }
+            
+            private void incorporarCartas(Deck origem, Deck destino) {
+                while (!origem.vazio()) {
+                    destino.insereEmbaixo(origem.retiraDeCima());
+                }
+            }
 }

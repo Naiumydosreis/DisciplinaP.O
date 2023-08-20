@@ -11,6 +11,16 @@ public class App {
             jogador1.insereEmbaixo(baralho.retiraDeCima());
             jogador2.insereEmbaixo(baralho.retiraDeCima());
         }
+        while (!jogador1.vazio() && !jogador2.vazio()) {
+            jogador1.incorporarCartas(jogador2);
+            jogador1.embaralha();
+        }
+            while (!jogador2.vazio() && !jogador1.vazio()) {
+                jogador2.incorporarCartas(jogador1);
+                jogador2.embaralha();
+    
+            }
+
         // Loop do jogo
         boolean acabou = false;
         int rodada = 1; 
